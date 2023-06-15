@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply bg-gray-100 h-screen w-full p-4 md:p-10
+}
+
+/* Remove the arrow from the number input */
+.custom__number::-webkit-inner-spin-button,
+.custom__number::-webkit-outer-spin-button{
+-webkit-appearance: none;
+margin: 0;
+}
