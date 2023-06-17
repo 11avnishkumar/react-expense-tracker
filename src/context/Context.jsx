@@ -81,13 +81,15 @@ export const GlobalContext = createContext(initialData)
 // Provider Component
 const GlobalProviders = ({ children }) => {
     const [state, dispatch] = useReducer(expenseReducer, initialData)
-    const [isOpen, setIsOpen] = useState(true) // State for modal
+    // fetch the data from localStorage
+    const [TotalAmountofLocal,setTotalAmountofLocal] = useState(localStorage.getItem("TotalAmount"))
+    // console.log("from providers",TotalAmountofLocal) // debugging
     return (
         <GlobalContext.Provider value={{
             transactions:state.transactions,
             dispatch,
-            isOpen,
-            setIsOpen
+            TotalAmountofLocal,
+            setTotalAmountofLocal
         }}>
             {children}
         </GlobalContext.Provider>

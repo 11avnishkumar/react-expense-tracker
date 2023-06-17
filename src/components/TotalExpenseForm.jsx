@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Dialog } from '@headlessui/react'
 import { useContext, useState } from 'react'
 import { GlobalContext } from '../context/Context'
 import { v4 as uuidv4 } from 'uuid'; // to generate an unique id
+import { numberFormatter } from '../utils/utils';
 const TotalExpenseForm = ({setIsOpen}) => {
   const { dispatch } = useContext(GlobalContext)
   // collect user input data
@@ -14,7 +15,7 @@ const TotalExpenseForm = ({setIsOpen}) => {
     id: uuidv4(),
     amount: +amount, date, category, description
   }
-  console.log(expensesData)
+  // console.log(expensesData)
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch({
@@ -26,25 +27,25 @@ const TotalExpenseForm = ({setIsOpen}) => {
   }
   return (
     <div>
-      <Dialog.Title className="text-center text-5xl font-bold text-slate-500 mb-3">Add Expenses</Dialog.Title>
+      <Dialog.Title className="text-center text-2xl md:text-5xl font-bold text-slate-500 mb-3">Add Expenses</Dialog.Title>
           {/* <Dialog.Description> 
           </Dialog.Description> */}
           <form onSubmit={handleSubmit} className='flex flex-col justify-between h-[90%] gap-4 mb-8'>
                 <div>
                   <div className='form-group mb-4'>
-                    <input type="number" className='custom__number w-full block  shadow-sm border-none rounded-md text-center px-2 py-3 focus:ring-0 text-6xl placeholder:text-6xl placeholder:text-center' placeholder='$ 0.00' onChange={(e) => setAmount(e.target.value)} />
+                    <input type="number" className='custom__number w-full block  border-none rounded-md text-center px-2 py-3 focus:ring-0 text-6xl  placeholder:text-6xl placeholder:text-center' placeholder={numberFormatter(0)} onChange={(e) => setAmount(e.target.value)} />
                     <label htmlFor="" className='sr-only'>Amount</label>
                   </div>
                   <div className='form-group mb-4'>
-                    <input type="text" id="category" className='w-full block  border-none rounded-md px-2 py-3 shadow-sm focus:ring-0' placeholder='category' onChange={(e) => setCategory(e.target.value)} />
+                    <input type="text" id="category" className='w-full block  border-none rounded-md px-2 py-3  focus:ring-0 placeholder:uppercase' placeholder='category' onChange={(e) => setCategory(e.target.value)} />
                     <label htmlFor="category" className='sr-only'>Category</label>
                   </div>
                   <div className='form-group mb-4'>
-                    <input type="text" className='w-full block  border-none rounded-md px-2 py-3 shadow-sm focus:ring-0' placeholder='description' onChange={(e) => setDescription(e.target.value)} />
+                    <input type="text" className='w-full block  border-none rounded-md px-2 py-3  focus:ring-0 placeholder:uppercase' placeholder='description' onChange={(e) => setDescription(e.target.value)} />
                     <label htmlFor="" className='sr-only'>Description</label>
                   </div>
                   <div className='form-group mb-4'>
-                    <input type="date" className='w-full block  border-none rounded-md px-2 py-3 shadow-sm focus:ring-0' placeholder='date' onChange={(e) => setDate(e.target.value)} />
+                    <input type="date" className='w-full block  border-none rounded-md px-2 py-3  focus:ring-0 '  onChange={(e) => setDate(e.target.value)} />
                     <label htmlFor="" className='sr-only'>Date</label>
                   </div>
                 </div>

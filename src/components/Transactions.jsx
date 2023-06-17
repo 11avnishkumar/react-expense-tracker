@@ -26,8 +26,8 @@ const Transactions = () => {
         </div>
       )) : <p className='text-4xl text-slate-300 text-center'>Your Transaction details appear here...</p>}
       {/* Form modal open button */}
-      <div className='fixed z-[99] bottom-5 shadow-3xl right-5 w-16 h-16 overflow-hidden flex justify-center items-center'>
-        <button className='text-xl font-bold text-white rounded-full h-full w-full p-3 bg-emerald-500 cursor-pointer' style={{
+      <div className='fixed z-[99] bottom-5 shadow-3xl right-5 w-16 h-16 overflow-hidden flex justify-center items-center cursor-pointer'>
+        <button className='inline-block text-xl font-bold text-white rounded-full h-full w-full p-3 bg-emerald-500' style={{
           background: "rgb(79,223,208)",
           background: "linear-gradient(30deg, rgba(79,223,208,1) 0%, rgba(188,88,228,1) 49%, rgba(255,199,0,1) 100%)"
         }} onClick={() => setIsOpen(!isOpen)}>{ isOpen ? <XMarkIcon/> : <PlusIcon/>}</button>
